@@ -1,10 +1,16 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDb from "./config/db.js";
+import cookieParser from "cookie-parser";
 
+//for env variables
 dotenv.config();
 
 const app = express();
+
+//for parsing json data in request body
+app.use(express.json());
+app.use(cookieParser());
 const PORT = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
