@@ -10,6 +10,7 @@ const app = express();
 
 //for parsing json data in request body
 app.use(express.json());
+//for parsing cookies
 app.use(cookieParser());
 const PORT = process.env.PORT || 5000;
 
