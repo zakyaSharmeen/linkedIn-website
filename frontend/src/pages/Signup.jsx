@@ -2,11 +2,13 @@ import React, { useContext, useState } from "react";
 import logo from "../assets/logo.svg";
 import { useNavigate } from "react-router-dom";
 import { authDataContext } from "../context/AuthContext";
+import { userDataContext } from "../context/UserContext";
 import axios from "axios";
 
 function Signup() {
   let [show, setShow] = useState(false);
   let { serverUrl } = useContext(authDataContext);
+  let { userData, setUserData } = useContext(userDataContext);
   let navigate = useNavigate();
 
   let [firstName, setFirstName] = useState("");
@@ -33,6 +35,7 @@ function Signup() {
         { withCredentials: true },
       );
       console.log(result);
+      setUserData(result.data);
       navigate("/");
 
       setLoading(false);
